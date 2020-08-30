@@ -6,3 +6,11 @@ export interface Recruiter {
   state: string
   country: string
 }
+
+
+export interface User {
+  id: string
+  email: string
+  password: string
+  alias: string
+}

@@ -42,7 +42,7 @@ const buildQuery = (table: string, conditions?: any, options?: QueryOptions): [s
   // Set the columns to select
   let columns = '*'
   if (options && options.fields) {
-    columns = options.fields.map((field: string) => `'${field}'`).join(', ')
+    columns = options.fields.map((field: string) => `"${field}"`).join(', ')
   }
 
   let sql = `SELECT ${columns} FROM ${table}`
@@ -76,6 +76,9 @@ const buildQuery = (table: string, conditions?: any, options?: QueryOptions): [s
 const init = async () => {
 
   let sql = "CREATE TABLE IF NOT EXISTS recruiters (id uuid PRIMARY KEY, name varchar(255), company varchar(255), city varchar(255), state varchar(255), country varchar(255));"
+  await query(sql, [])
+
+  sql = "CREATE TABLE IF NOT EXISTS users (id uuid PRIMARY KEY, email varchar(255), password varchar(255), alias varchar(255));"
   await query(sql, [])
 }
 

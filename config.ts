@@ -7,4 +7,6 @@ const dbCreds = {
   port: +Deno.env.get('DB_PORT')
 }
 
-export { dbCreds }
+const jwtKey = Deno.env.get('JWT_KEY')
+
+export { dbCreds, jwtKey }
